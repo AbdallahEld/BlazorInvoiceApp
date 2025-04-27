@@ -1,0 +1,31 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-danger" @onclick = "resetCount">Reset</button>
+<hr />
+<ul>
+    @for (int i = 1; i <= currentCount; i++)
+    {
+        <li>item @i</li>
+    }
+</ul>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void resetCount()
+    {
+        currentCount = 0;
+    }
+}
