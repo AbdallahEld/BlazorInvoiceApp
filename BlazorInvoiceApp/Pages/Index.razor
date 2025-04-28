@@ -1,7 +1,31 @@
 ﻿@page "/"
 
+@inject IDbContextFactory<ApplicationDbContext> dbfactory
+
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+@if (customers is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    foreach (Customer c in customers)
+    {
+        <p>@c.Name</p>
+    }
+}
+
+@code {
+    private List<Customer> customers = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var dbcontext = dbfactory.CreateDbContext();
+        customers = await dbcontext.Customers.ToListAsync();
+    }
+}
