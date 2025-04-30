@@ -28,6 +28,8 @@ namespace BlazorInvoiceApp
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 
+            builder.Services.AddTransient<IRepositoryCollection , RepositoryCollection>();
+
             var mapperConfig = new MapperConfiguration(c =>
             {
                 c.AddProfile(new AutoMapperProfile());

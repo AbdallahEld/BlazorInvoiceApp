@@ -1,6 +1,7 @@
 ﻿@page "/"
 
-@inject IDbContextFactory<ApplicationDbContext> dbfactory
+@inject IRepositoryCollection repo;
+@inject AuthenticationStateProvider authState;
 
 <PageTitle>Index</PageTitle>
 
@@ -14,18 +15,19 @@ Welcome to your new app.
 }
 else
 {
-    foreach (Customer c in customers)
+    foreach (CustomerDTO c in customers)
     {
         <p>@c.Name</p>
     }
 }
 
 @code {
-    private List<Customer> customers = null!;
+    private List<CustomerDTO> customers = null!;
 
-    protected override async Task OnInitializedAsync()
+    protected async override Task OnInitializedAsync()
     {
-        var dbcontext = dbfactory.CreateDbContext();
-        customers = await dbcontext.Customers.ToListAsync();
+        AuthenticationState auth = await authState.GetAuthenticationStateAsync();
+
+        customers = await repo.Customer.GetAllMine(auth.User);
     }
 }
