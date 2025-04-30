@@ -1,5 +1,7 @@
+using AutoMapper;
 using BlazorInvoiceApp.Areas.Identity;
 using BlazorInvoiceApp.Data;
+using BlazorInvoiceApp.Repository;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -25,6 +27,15 @@ namespace BlazorInvoiceApp
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+            var mapperConfig = new MapperConfiguration(c =>
+            {
+                c.AddProfile(new AutoMapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+
+            builder.Services.AddSingleton(mapper);
 
             var app = builder.Build();
 
