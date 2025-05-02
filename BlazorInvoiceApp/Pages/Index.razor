@@ -9,25 +9,6 @@
 
 Welcome to your new app.
 
-@if (customers is null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    foreach (CustomerDTO c in customers)
-    {
-        <p>@c.Name</p>
-    }
-}
-
 @code {
-    private List<CustomerDTO> customers = null!;
 
-    protected async override Task OnInitializedAsync()
-    {
-        AuthenticationState auth = await authState.GetAuthenticationStateAsync();
-
-        customers = await repo.Customer.GetAllMine(auth.User);
-    }
 }

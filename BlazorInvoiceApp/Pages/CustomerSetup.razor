@@ -1,0 +1,15 @@
+﻿@page "/customersetup"
+
+<PageTitle>Customers setup</PageTitle>
+<AuthorizeView>
+    <Authorized>
+        <CustomerSetupComponent></CustomerSetupComponent>
+    </Authorized>
+    <NotAuthorized>
+        Please login to see your cusotmers.
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
