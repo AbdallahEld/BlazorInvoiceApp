@@ -11,7 +11,7 @@ namespace BlazorInvoiceApp.Repository
         where TEntity : class, IEntity, IOwnedEntity
         where TDTO : class, IDTO, IOwnedDTO
     {
-        private readonly ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
         protected string? getMyUserId(ClaimsPrincipal User)
