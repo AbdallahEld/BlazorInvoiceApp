@@ -16,7 +16,7 @@ namespace BlazorInvoiceApp.Repository
         public async Task Seed(ClaimsPrincipal user)
         {
             string? userId = getMyUserId(user);
-            if (userId == null)
+            if (userId is not null)
             {
                 int count = await _context.InvoiceTerms.Where(e => e.UserId == userId).CountAsync();
                 if (count == 0)

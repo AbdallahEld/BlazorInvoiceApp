@@ -1,6 +1,14 @@
 ﻿@page "/invoicetermssetup"
-<h3>InvoiceTermsSetup</h3>
 
+<PageTitle>Invoice Terms Setup</PageTitle>
+<AuthorizeView>
+    <Authorized>
+        <InvoiceTermsSetupComponent></InvoiceTermsSetupComponent>
+    </Authorized>
+    <NotAuthorized>
+        Please login to see your invoice terms.
+    </NotAuthorized>
+</AuthorizeView>
 @code {
 
 }

@@ -1,7 +1,7 @@
 ﻿@inject IRepositoryCollection repo
 @inject AuthenticationStateProvider authProvider
 
-<h3>CustomerSetupComponent</h3>
+<h3>Customers</h3>
 <div class="text-danger">@Message</div>
 <RadzenButton ButtonStyle="ButtonStyle.Success" Icon="add_circle_outline" class="mt-2 mb-4" Text="Add New Customer" Click="@InserRow" Disabled=@(customerToInsert != null || customerToUpdate != null)/>
 <RadzenDataGrid @ref="customersGrid" AllowAlternatingRows = "false" AllowSorting ="true" EditMode="DataGridEditMode.Single"
