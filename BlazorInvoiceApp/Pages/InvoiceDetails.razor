@@ -1,0 +1,7 @@
+﻿@page "/invoicedetail/{id}"
+<h3>InvoiceDetails</h3>
+<InvoiceDetailsComponent Id ="@id"></InvoiceDetailsComponent>
+@code {
+    [Parameter]
+    public string? id { get; set; }
+}

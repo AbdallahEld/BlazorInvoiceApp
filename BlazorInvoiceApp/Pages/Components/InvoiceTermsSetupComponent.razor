@@ -2,6 +2,7 @@
 @inject IRepositoryCollection repo
 
 <h3>Invoice Terms</h3>
+<div class="text-danger">@Message</div>
 <RadzenButton ButtonStyle="ButtonStyle.Success" Icon="add_circle_outline" class="mt-2 mb-4" Text="Add New Terms Type" Click="@InsertRow" Disabled=@(termToInsert != null || termToUpdate != null) />
 <RadzenDataGrid @ref="invoiceTermsGrid" AllowAlternatingRows = "false" AllowSorting ="true" EditMode="DataGridEditMode.Single"
 TItem="InvoiceTermsDTO" Data="invoiceTerms" RowEdit="@OnUpdateRow" RowCreate="@OnCreateRow" Sort="@Reset">

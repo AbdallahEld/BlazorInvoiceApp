@@ -1,14 +1,13 @@
 ﻿@page "/"
-
-@inject IRepositoryCollection repo;
-@inject AuthenticationStateProvider authState;
-
-<PageTitle>Index</PageTitle>
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
+<PageTitle>Invoice Terms Setup</PageTitle>
+<AuthorizeView>
+    <Authorized>
+        <InvoicesComponent></InvoicesComponent>
+    </Authorized>
+    <NotAuthorized>
+        Please login to see your invoices.
+    </NotAuthorized>
+</AuthorizeView>
 @code {
 
 }
